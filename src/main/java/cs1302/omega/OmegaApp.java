@@ -1,6 +1,7 @@
 package cs1302.omega;
 
 import cs1302.game.DemoGame;
+import cs1302.game.SpaceInvaders;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -10,11 +11,27 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.layout.HBox;
+import javafx.scene.control.Button;
+import javafx.event.ActionEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+
 
 /**
- * REPLACE WITH NON-SHOUTING DESCRIPTION OF YOUR APP.
+ * the omega app triggers instance variable {@code SpaceInvaders} game.
  */
 public class OmegaApp extends Application {
+
+    private SpaceInvaders game;
+    private Label notice;
+    private ImageView banner;
+    private Label instructions;
+    private VBox root;
+    private HBox button;
+    private Button start;
+    private Button quit;
+    private Scene scene;
 
     /**
      * Constructs an {@code OmegaApp} object. This default (i.e., no argument)
@@ -27,26 +44,39 @@ public class OmegaApp extends Application {
     public void start(Stage stage) {
 
         // demonstrate how to load local asset using "file:resources/"
-        Image bannerImage = new Image("file:resources/readme-banner.png");
-        ImageView banner = new ImageView(bannerImage);
-        banner.setPreserveRatio(true);
-        banner.setFitWidth(640);
+        ImageView titlePage = new ImageView("file:resources/readme-banner.png");
+        titlePage.setPreserveRatio(true);
+        titlePage.setFitWidth(640);
+        button = new HBox();
+        start = new Button("Start");
+        quit = new Button("Quit");
+        button.setStyle("-fx-background-color: black");
+        button.getChildren().addAll(start, quit);
+        start.setOnAction(event -> startGame());
+        quit.setOnAction(event -> Platform.exit());
+
 
         // some labels to display information
-        Label notice = new Label("Modify the starter code to suit your needs.");
-        Label instructions
-            = new Label("Move left/right with arrow keys; click rectangle to teleport.");
+        notice = new Label("Destroy all aliens! Dont let them reach you!!!");
+        instructions
+            = new Label("Move LEFT & RIGHT with arrow keys; press UP ARROW Key to shoot.");
 
         // demo game provided with the starter code
-        DemoGame game = new DemoGame(640, 240);
+        game = new SpaceInvaders(640, 240);
+        game.setStyle("-fx-background-color: black");
+        game.setApplication(this);
 
         // setup scene
-        VBox root = new VBox(banner, notice, instructions, game);
-        Scene scene = new Scene(root);
+        root = new VBox(notice, instructions, game);
+        scene = new Scene(root);
 
         // setup stage
-        stage.setTitle("OmegaApp!");
+        stage.setTitle("SPACE INVADERS!");
         stage.setScene(scene);
+        stage.setMaxWidth(640);
+        stage.setMinWidth(639);
+        stage.setMaxHeight(416.5);
+        stage.setMinHeight(410);
         stage.setOnCloseRequest(event -> Platform.exit());
         stage.sizeToScene();
         stage.show();
@@ -56,4 +86,44 @@ public class OmegaApp extends Application {
 
     } // start
 
+    /**
+     * helper method to start game.
+     */
+    private void startGame() {
+        root.getChildren().clear();
+        game = new SpaceInvaders(640, 240);
+        game.setApplication(this);
+        game.setStyle("-fx-background-color: black");
+        root.getChildren().addAll(notice, instructions, game);
+        game.play();
+    } // startGame
+
+    /**
+     * private method to be used in space invaders class
+     * to display game end.
+     */
+    public void showGameOver() {
+        ImageView gameOver = new ImageView("file:resources/readme-banner.png");
+        gameOver.setPreserveRatio(false);
+        gameOver.setFitWidth(640);
+        gameOver.setFitHeight(360);
+        root.getChildren().clear();
+        start.setText("Play Again");
+        root.getChildren().addAll(gameOver, button);
+    } //showGameOver
+
+    /**
+     * private method to use in space invaders class
+     * to show you won screen.
+     */
+    public void showYouWon() {
+        ImageView youWon = new ImageView("file:resources/readme-banner.png");
+        youWon.setPreserveRatio(false);
+        youWon.setFitWidth(640);
+        youWon.setFitHeight(360);
+        root.getChildren().clear();
+        start.setText("Play Again");
+        root.getChildren().addAll(youWon, button);
+
+    } // showYouWon
 } // OmegaApp

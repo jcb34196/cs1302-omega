@@ -14,6 +14,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import javafx.util.Duration;
+import cs1302.omega.OmegaApp;
 
 /**
  * An abstract parent class for simple games. The central component of any concrete
@@ -38,6 +39,7 @@ public abstract class Game extends Region {
     private final BitSet keysPressed = new BitSet(); // set of currently pressed keys
 
     private boolean initialized = false;             // play() has been called?
+    protected OmegaApp app;
 
     /**
      * Construct a {@code Game} object.
@@ -123,6 +125,14 @@ public abstract class Game extends Region {
             return false;
         } // if
     } // isKeyPressed
+
+    /**
+     * sets Omega app the phase of game will be on.
+     * @param app omega app the game will be played on
+     */
+    public void setApplication(OmegaApp app) {
+        this.app = app;
+    } // setApplication
 
     /**
      * Setup and start the main game loop.
