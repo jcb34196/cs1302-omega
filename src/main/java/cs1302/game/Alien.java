@@ -19,7 +19,7 @@ public class Alien extends ImageView {
      * @param game parent game
      */
     public Alien(Game game) {
-        super("file:resources/sprites/cat_idle.gif"); // Call parent Constuctor
+        super("file:resources/sprites/Alien.png"); // Call parent Constuctor
         this.setPreserveRatio(true);
         this.setFitHeight(20);
         this.setFitWidth(20);

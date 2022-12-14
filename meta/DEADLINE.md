@@ -11,20 +11,29 @@ Markdown is transformed into nice looking HTML.
 > category that you chose, and the primary functions available to users
 > of the app.
 
+>>I chose to make a Game application. I mimicked the 1978 hit arcade game,
+>>which my app shares many functionality with. The primary goal for the user
+>>is to destroy all of the alien invaders while stoping the aliens from getting past you,
+>>while trying to stay alive yourself. When you lose or win you have the option to either
+>>quit the game or restart a new round.
+
 > **Also, include the GitHub `https` URL to your repository.**
 
-TODO WRITE / REPLACE
+https://github.com/jcb34196/cs1302-omega
 
 ## Part 2: New
 
 > What is something new and/or exciting that you learned from working
 > on this project?
 
-TODO WRITE / REPLACE
+>>I learned how useful helper methods can be when breaking apart large chunks
+>>of code into smaller easier to debug sections. As well as drawing out
+>>plans for my code.
 
 ## Part 3: Retrospect
 
 > If you could start the project over from scratch, what do
 > you think might do differently and why?
 
-TODO WRITE / REPLACE
+>>Plan out my methods in detail sooner to save time when things break,
+>>knowing what could possibly break helps when debugging.

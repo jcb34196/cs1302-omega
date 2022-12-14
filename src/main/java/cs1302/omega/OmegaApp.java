@@ -103,7 +103,7 @@ public class OmegaApp extends Application {
      * to display game end.
      */
     public void showGameOver() {
-        ImageView gameOver = new ImageView("file:resources/readme-banner.png");
+        ImageView gameOver = new ImageView("file:resources/sprites/Game_Over.jpg");
         gameOver.setPreserveRatio(false);
         gameOver.setFitWidth(640);
         gameOver.setFitHeight(360);
@@ -117,7 +117,7 @@ public class OmegaApp extends Application {
      * to show you won screen.
      */
     public void showYouWon() {
-        ImageView youWon = new ImageView("file:resources/readme-banner.png");
+        ImageView youWon = new ImageView("file:resources/sprites/Win_Screen.png");
         youWon.setPreserveRatio(false);
         youWon.setFitWidth(640);
         youWon.setFitHeight(360);

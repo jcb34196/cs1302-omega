@@ -115,7 +115,7 @@ public class SpaceInvaders extends Game {
                     global = 0;
                 } // if
                 bullet[global].update();
-                bullet[global].setX(player.getX());
+                bullet[global].setX(player.getX() + 10);
                 bullet[global].setY(player.getY());
                 bullet[global].setVisible(true);
                 global++;
@@ -166,13 +166,13 @@ public class SpaceInvaders extends Game {
             if (var.isVisible() && var.getBoundsInParent().getMaxY() >=
                 player.getBoundsInParent().getMinY()) {
                 app.showGameOver();
-                System.out.println("game1 lost");
+                //System.out.println("game1 lost");
                 stop();
             } // if
         } // for
         if (player.isVisible() != true) {
             app.showGameOver();
-            System.out.println("game2 lost");
+            //System.out.println("game2 lost");
             stop();
         } // if
     } // checkLost
@@ -205,21 +205,6 @@ public class SpaceInvaders extends Game {
         } //  while
         return alien.get(x);
     } // randAlien
-
-    /**
-     * private helper method to update bullet movment;
-     * to save space in main game loop.
-     */
-    private void updateBullet() {
-        for (Bullet var : bullet) {
-            var.update();
-            var.setX(320);
-            var.setY(300);
-            var.setVisible(true);
-            System.out.println("ssssssssssssssssssss\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-
-        } // for
-    } // updateBullet
 
     /**
      * private helper method to track each indiviusal bullet from
@@ -268,9 +253,9 @@ public class SpaceInvaders extends Game {
         for (ABullet var: aBullet) {
             if (var.isVisible() && player.getBoundsInParent().intersects(var.getBoundsInParent())) {
                 player.setVisible(false);
-                System.out.println("abulletCheck");
-                System.out.println(var.getBoundsInParent());
-                System.out.println(player.getBoundsInParent());
+                //System.out.println("abulletCheck");
+                //System.out.println(var.getBoundsInParent());
+                //System.out.println(player.getBoundsInParent());
                 stop();
             } // if
         } // for
@@ -302,7 +287,7 @@ public class SpaceInvaders extends Game {
             if (var.getBoundsInParent().intersects(player.getBoundsInParent())) {
                 if (var.isVisible() == true) {
                     player.setVisible(false);
-                    System.out.println("AlienCheck");
+                    //System.out.println("AlienCheck");
                     stop();
                 } // if
             } // if

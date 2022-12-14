@@ -17,7 +17,7 @@ public class Player extends ImageView {
      * @param game parent game
      */
     public Player(Game game) {
-        super("file:resources/sprites/cat_idle.gif"); // call parent constructor
+        super("file:resources/sprites/Ship.png"); // call parent constructor
         this.setPreserveRatio(true);
         this.setFitHeight(20);
         this.setFitWidth(20);
